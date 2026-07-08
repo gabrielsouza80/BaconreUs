@@ -74,6 +74,8 @@ dotnet build .\BaconreUs.csproj
 7. Clicar em **Anular** para anular uma encomenda.
 8. Ver o total faturado e a quantidade de encomendas ativas no resumo.
 
+As encomendas anuladas continuam visíveis na tabela, mas não entram no total faturado nem na contagem de encomendas ativas.
+
 ## Preços usados
 
 - Pizza Bacon: 10 €

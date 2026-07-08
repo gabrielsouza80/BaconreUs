@@ -121,7 +121,7 @@ Controla as ações da janela. Quando o utilizador clica num botão ou seleciona
   Inicia a janela, define o formato português para euros e carrega a lista.
 
 - [LOCALIZADOR: MainWindow.xaml.cs | COM-003]
-  Guarda uma encomenda nova ou edita uma encomenda selecionada.
+  Guarda uma encomenda nova ou edita uma encomenda ativa selecionada.
 
 - [LOCALIZADOR: MainWindow.xaml.cs | COM-004]
   Anula uma encomenda selecionada sem a apagar.
@@ -130,7 +130,7 @@ Controla as ações da janela. Quando o utilizador clica num botão ou seleciona
   Limpa o formulário para criar uma nova encomenda.
 
 - [LOCALIZADOR: MainWindow.xaml.cs | COM-006]
-  Carrega os dados da linha selecionada para o formulário, permitindo edição.
+  Carrega os dados da linha selecionada para o formulário.
 
 - [LOCALIZADOR: MainWindow.xaml.cs | COM-007]
   Atualiza a tabela e o resumo.
@@ -224,13 +224,13 @@ Configura o projeto .NET/WPF.
 ## 6. Explicação dos botões
 
 - Guardar:
-  Insere uma nova encomenda ou guarda alterações de uma encomenda selecionada.
+  Insere uma nova encomenda ou guarda alterações de uma encomenda ativa selecionada.
 
 - Nova:
   Limpa os campos para criar uma nova encomenda.
 
 - Anular:
-  Muda a encomenda selecionada para `Anulada`. A encomenda continua na lista.
+  Muda a encomenda selecionada para `Anulada`. A encomenda continua na lista. Se a encomenda já estiver anulada, a aplicação apenas avisa o utilizador.
 
 ## 7. Como funciona a anulação
 
@@ -242,6 +242,8 @@ Assim, a encomenda continua visível na tabela, mas deixa de contar para:
 
 - total faturado;
 - quantidade de encomendas ativas.
+
+Uma encomenda anulada também não deve ser editada.
 
 ## 8. Como funciona o total faturado
 

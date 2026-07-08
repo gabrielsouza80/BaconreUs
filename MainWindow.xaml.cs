@@ -26,11 +26,17 @@ namespace BaconreUs
             AtualizarLista();
         }
 
-        // [LOCALIZADOR: MainWindow.xaml.cs | COM-003] Guarda uma nova encomenda ou edita a encomenda selecionada.
+        // [LOCALIZADOR: MainWindow.xaml.cs | COM-003] Guarda uma nova encomenda ou edita uma encomenda ativa selecionada.
         private void Guardar_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                if (dgEncomendas.SelectedItem is Encomenda selecionada && selecionada.Anulada)
+                {
+                    MessageBox.Show("Não é possível editar uma encomenda anulada.", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 var encomenda = new Encomenda
                 {
                     Id = _idEmEdicao ?? 0,
@@ -69,6 +75,12 @@ namespace BaconreUs
                 return;
             }
 
+            if (encomenda.Anulada)
+            {
+                MessageBox.Show("Esta encomenda já está anulada.", "Atenção", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
             _service.Anular(encomenda.Id);
             LimparFormulario();
             AtualizarLista();
@@ -80,7 +92,7 @@ namespace BaconreUs
             LimparFormulario();
         }
 
-        // [LOCALIZADOR: MainWindow.xaml.cs | COM-006] Quando uma linha é selecionada, coloca os dados no formulário para edição.
+        // [LOCALIZADOR: MainWindow.xaml.cs | COM-006] Quando uma linha é selecionada, coloca os dados no formulário.
         private void DgEncomendas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (dgEncomendas.SelectedItem is not Encomenda encomenda)
