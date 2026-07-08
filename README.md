@@ -35,6 +35,10 @@ A BLL contém as regras de negócio, como validações e cálculo de totais.
 A DAL guarda e gere as encomendas numa lista em memória.  
 O Model representa os dados de uma encomenda.
 
+O arquivo `BaconReUs.sln` permite abrir a solução completa no Visual Studio.
+
+Na classe `Encomenda`, os dados são guardados internamente em campos privados. As propriedades públicas continuam disponíveis para a interface WPF conseguir mostrar os dados na tabela.
+
 ## Armazenamento dos dados
 
 Os dados são guardados numa `List<Encomenda>` em memória, dentro do Repository.
@@ -61,6 +65,12 @@ Se quiseres apenas compilar antes de executar, usa:
 
 ```powershell
 dotnet build .\BaconreUs.csproj
+```
+
+Também é possível compilar pela solução:
+
+```powershell
+dotnet build .\BaconReUs.sln
 ```
 
 ## Como usar a aplicação

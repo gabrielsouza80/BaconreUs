@@ -39,7 +39,7 @@ O projeto mantém uma estrutura em camadas:
   Fica em `DAL/EncomendaRepository.cs`. Guarda, lista, edita e anula encomendas numa lista em memória.
 
 - Model:
-  Fica em `Models/Encomenda.cs`. Representa os dados de uma encomenda.
+  Fica em `Models/Encomenda.cs`. Representa os dados de uma encomenda e usa encapsulamento simples.
 
 Analogia simples:
 
@@ -141,10 +141,12 @@ Controla as ações da janela. Quando o utilizador clica num botão ou seleciona
 
 Representa uma encomenda no programa.
 
+A classe usa campos privados para guardar os valores internamente e propriedades públicas para o WPF conseguir ler os dados e mostrá-los na tabela. Isto é uma forma simples de encapsulamento em C#.
+
 #### Localizadores principais
 
 - [LOCALIZADOR: Encomenda.cs | COM-001]
-  Mostra que a classe `Encomenda` é o Model da aplicação.
+  Mostra que a classe `Encomenda` usa campos privados e propriedades públicas para manter encapsulamento e permitir o Binding do WPF.
 
 - [LOCALIZADOR: Encomenda.cs | COM-002]
   Mostra o texto do estado da encomenda: `Ativa` ou `Anulada`.
@@ -215,6 +217,8 @@ Representa uma encomenda no programa.
 #### Para que serve?
 
 Configura o projeto .NET/WPF.
+
+O projeto também tem o arquivo `BaconReUs.sln`, que permite abrir a solução completa no Visual Studio.
 
 #### Localizador principal
 
