@@ -1,0 +1,109 @@
+<!-- [LOCALIZADOR: MainWindow.xaml | COM-001] Esta é a janela principal da aplicação, onde o utilizador vê e gere as encomendas. -->
+<Window x:Class="BaconreUs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Bacon're Us - Encomendas" Height="620" Width="900"
+        WindowStartupLocation="CenterScreen">
+    <!-- [LOCALIZADOR: MainWindow.xaml | COM-002] O Grid organiza a janela em linhas para separar título, formulário, tabela e resumo. -->
+    <Grid Margin="15">
+        <!-- [LOCALIZADOR: MainWindow.xaml | COM-003] Estas linhas definem o espaço de cada zona visual da janela. -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- [LOCALIZADOR: MainWindow.xaml | COM-004] Este texto mostra o nome do sistema no topo da janela. -->
+        <TextBlock Grid.Row="0"
+                   Text="Pizzaria Bacon're Us - Sistema de Takeaway"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   Margin="0 0 0 12"/>
+
+        <!-- [LOCALIZADOR: MainWindow.xaml | COM-005] Esta caixa agrupa os campos onde o utilizador escreve os dados da encomenda. -->
+        <GroupBox Grid.Row="1" Header="Dados da encomenda" Padding="10" Margin="0 0 0 12">
+            <!-- [LOCALIZADOR: MainWindow.xaml | COM-006] Este Grid organiza as etiquetas, caixas de texto e botões do formulário. -->
+            <Grid>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-007] Estas colunas alinham os nomes dos campos e as caixas onde se escreve. -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-008] Estas linhas separam os dados do cliente, as quantidades e os botões. -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-009] Esta etiqueta indica que a caixa ao lado serve para escrever o telefone do cliente. -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Telefone:" VerticalAlignment="Center" Margin="0 5"/>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-010] Esta caixa guarda temporariamente o telefone escrito pelo utilizador. -->
+                <TextBox x:Name="txtTelefone" Grid.Row="0" Grid.Column="1" Margin="0 5 15 5"/>
+
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-011] Esta etiqueta indica que a caixa ao lado serve para escrever o contribuinte/NIF. -->
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="Contribuinte/NIF:" VerticalAlignment="Center" Margin="0 5"/>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-012] Esta caixa guarda temporariamente o NIF escrito pelo utilizador. -->
+                <TextBox x:Name="txtNif" Grid.Row="0" Grid.Column="3" Margin="0 5 15 5"/>
+
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-013] Esta etiqueta indica onde se escreve a quantidade de pizzas Bacon. -->
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Qtd. Bacon:" VerticalAlignment="Center" Margin="0 5"/>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-014] Esta caixa começa com zero e recebe a quantidade de pizzas Bacon. -->
+                <TextBox x:Name="txtQtdBacon" Grid.Row="1" Grid.Column="1" Margin="0 5 15 5" Text="0"/>
+
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-015] Esta etiqueta indica onde se escreve a quantidade de pizzas Tofu. -->
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="Qtd. Tofu:" VerticalAlignment="Center" Margin="0 5"/>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-016] Esta caixa começa com zero e recebe a quantidade de pizzas Tofu. -->
+                <TextBox x:Name="txtQtdTofu" Grid.Row="1" Grid.Column="3" Margin="0 5 15 5" Text="0"/>
+
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-017] Este painel coloca os botões lado a lado. -->
+                <StackPanel Grid.Row="2" Grid.ColumnSpan="5" Orientation="Horizontal" Margin="0 10 0 0">
+                    <!-- [LOCALIZADOR: MainWindow.xaml | COM-018] O botão Nova limpa o formulário para começar uma nova encomenda. -->
+                    <Button Content="Nova" Width="90" Margin="0 0 8 0" Click="Nova_Click"/>
+                    <!-- [LOCALIZADOR: MainWindow.xaml | COM-019] O botão Guardar insere uma encomenda nova ou guarda alterações de uma encomenda escolhida. -->
+                    <Button Content="Guardar" Width="90" Margin="0 0 8 0" Click="Guardar_Click"/>
+                    <!-- [LOCALIZADOR: MainWindow.xaml | COM-020] O botão Anular muda a encomenda selecionada para anulada. -->
+                    <Button Content="Anular" Width="90" Margin="0 0 8 0" Click="Anular_Click"/>
+                    <!-- [LOCALIZADOR: MainWindow.xaml | COM-021] Este texto mostra os preços usados no cálculo do total. -->
+                    <TextBlock Text="Preços: Bacon 10€ | Tofu 9€" VerticalAlignment="Center" Margin="15 0 0 0"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <!-- [LOCALIZADOR: MainWindow.xaml | COM-022] A DataGrid é a tabela onde aparecem as encomendas guardadas. -->
+        <DataGrid x:Name="dgEncomendas"
+                  Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionChanged="DgEncomendas_SelectionChanged">
+            <!-- [LOCALIZADOR: MainWindow.xaml | COM-023] Estas colunas escolhem que dados da encomenda aparecem na tabela. -->
+            <DataGrid.Columns>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-024] Esta coluna mostra o número identificador da encomenda. -->
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-025] Esta coluna mostra o telefone do cliente. -->
+                <DataGridTextColumn Header="Telefone" Binding="{Binding Telefone}" Width="130"/>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-026] Esta coluna mostra o NIF do cliente. -->
+                <DataGridTextColumn Header="NIF" Binding="{Binding Nif}" Width="130"/>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-027] Esta coluna mostra a quantidade de pizzas Bacon. -->
+                <DataGridTextColumn Header="Bacon" Binding="{Binding QuantidadeBacon}" Width="90"/>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-028] Esta coluna mostra a quantidade de pizzas Tofu. -->
+                <DataGridTextColumn Header="Tofu" Binding="{Binding QuantidadeTofu}" Width="90"/>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-029] Esta coluna mostra o valor total da encomenda em formato de dinheiro. -->
+                <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat={}{0:C}}" Width="120"/>
+                <!-- [LOCALIZADOR: MainWindow.xaml | COM-030] Esta coluna mostra se a encomenda está ativa ou anulada. -->
+                <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- [LOCALIZADOR: MainWindow.xaml | COM-031] Esta zona cinzenta mostra o resumo com total faturado e encomendas ativas. -->
+        <Border Grid.Row="3" Background="#EEEEEE" Padding="10" Margin="0 12 0 0">
+            <!-- [LOCALIZADOR: MainWindow.xaml | COM-032] Este texto é atualizado pelo C# sempre que a lista muda. -->
+            <TextBlock x:Name="txtResumo" FontSize="16" FontWeight="Bold"/>
+        </Border>
+    </Grid>
+</Window>
