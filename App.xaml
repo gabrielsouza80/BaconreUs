@@ -1,10 +1,8 @@
-<!-- [LOCALIZADOR: App.xaml | COM-001] Este arquivo configura o início da aplicação WPF. -->
-<!-- [LOCALIZADOR: App.xaml | COM-002] StartupUri indica que a primeira janela aberta pelo programa é a MainWindow.xaml. -->
+<!-- [LOCALIZADOR: App.xaml | COM-001] Define que a aplicação começa pela janela MainWindow. -->
 <Application x:Class="BaconreUs.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
-    <!-- [LOCALIZADOR: App.xaml | COM-003] Application.Resources seria usado para guardar estilos ou recursos visuais comuns da aplicação. -->
     <Application.Resources>
     </Application.Resources>
 </Application>

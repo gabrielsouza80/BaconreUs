@@ -1,17 +1,10 @@
-<!-- [LOCALIZADOR: BaconreUs.csproj | COM-001] Este arquivo diz ao .NET como o projeto deve ser compilado. -->
+<!-- [LOCALIZADOR: BaconreUs.csproj | COM-001] Projeto WPF simples em .NET, sem pacotes externos. -->
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <!-- [LOCALIZADOR: BaconreUs.csproj | COM-002] WinExe indica que o projeto é uma aplicação com janela, não uma aplicação de consola. -->
     <OutputType>WinExe</OutputType>
-    <!-- [LOCALIZADOR: BaconreUs.csproj | COM-003] net8.0-windows indica que o projeto usa .NET 8 para Windows. -->
     <TargetFramework>net8.0-windows</TargetFramework>
-    <!-- [LOCALIZADOR: BaconreUs.csproj | COM-004] Nullable ajuda o C# a avisar sobre possíveis textos vazios ou nulos. -->
     <Nullable>enable</Nullable>
-    <!-- [LOCALIZADOR: BaconreUs.csproj | COM-005] UseWPF ativa o WPF para criar janelas, botões e tabelas. -->
     <UseWPF>true</UseWPF>
-    <!-- [LOCALIZADOR: BaconreUs.csproj | COM-006] ImplicitUsings adiciona automaticamente alguns using comuns do C#. -->
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
-  <!-- [LOCALIZADOR: BaconreUs.csproj | COM-007] O projeto não usa pacotes externos, porque agora guarda as encomendas apenas numa List em memória. -->
 </Project>
